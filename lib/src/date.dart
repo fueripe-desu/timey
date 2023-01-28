@@ -1,3 +1,8 @@
+class DateException implements Exception {
+  String error;
+  DateException(this.error);
+}
+
 class Date {
   late int _day;
   late int _month;
