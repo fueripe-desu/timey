@@ -63,6 +63,14 @@ class Date {
     return isEqual(now);
   }
 
+  bool isLeapYear() {
+    if (_year % 100 != 0) {
+      return _year % 4 == 0;
+    } else {
+      return _year % 400 == 0;
+    }
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
