@@ -33,6 +33,16 @@ class Date {
     _year = now.year;
   }
 
+  Date.fromInt({
+    required int year,
+    required int month,
+    required int day,
+  }) {
+    _day = day;
+    _month = month;
+    _year = year;
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
