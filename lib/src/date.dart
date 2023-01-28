@@ -47,6 +47,8 @@ class Date {
   int get month => _month;
   int get year => _year;
 
+  DateTime get datetime => DateTime(_year, _month, _day);
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
