@@ -49,6 +49,14 @@ class Date {
 
   DateTime get datetime => DateTime(_year, _month, _day);
 
+  bool isEqual(DateTime date) {
+    final sameDay = _day == date.day;
+    final sameMonth = _month == date.month;
+    final sameYear = _year == date.year;
+
+    return sameDay && sameMonth && sameYear;
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
