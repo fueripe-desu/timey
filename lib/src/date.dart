@@ -143,6 +143,14 @@ class Date {
     }
   }
 
+  void addDays(int amount) {
+    if (amount < 1) throw DateException("Amount should be greater than 0.");
+
+    for (var i = 0; i < amount; i++) {
+      _incrementDay();
+    }
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
