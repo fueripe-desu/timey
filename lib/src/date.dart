@@ -151,6 +151,40 @@ class Date {
     }
   }
 
+  void addMonths(int amount) {
+    if (amount < 1) throw DateException("Amount should be greater than 0.");
+
+    int targetYear = _year;
+    int targetMonth = _month;
+
+    // If months exceed 12, take the modulus of this value
+    if (_month + amount > 12) {
+      targetMonth = (_month + amount) % 12;
+      targetYear = _year + (amount ~/ 12);
+    } else {
+      targetMonth = _month + amount;
+    }
+
+    final targetDate = DateTime(targetYear, targetMonth, _day);
+
+    while (!isEqual(targetDate)) {
+      _incrementDay();
+      print(this.toString());
+    }
+  }
+
+  void addYears(int amount) {
+    if (amount < 1) throw DateException("Amount should be greater than 0.");
+
+    final targetYear = _year + amount;
+    final targetDate = DateTime(targetYear, _month, _day);
+
+    while (!isEqual(targetDate)) {
+      _incrementDay();
+      print(this.toString());
+    }
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
