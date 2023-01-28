@@ -9,6 +9,14 @@ class Date {
     _year = time.year;
   }
 
+  Date.today() {
+    final now = DateTime.now();
+
+    _day = now.day;
+    _month = now.month;
+    _year = now.year;
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
