@@ -57,6 +57,12 @@ class Date {
     return sameDay && sameMonth && sameYear;
   }
 
+  bool isToday() {
+    final now = DateTime.now();
+
+    return isEqual(now);
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
