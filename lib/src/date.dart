@@ -71,6 +71,38 @@ class Date {
     }
   }
 
+  bool is30Days() {
+    if (_month == 2) {
+      return false;
+    }
+
+    switch (_month) {
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  bool is31Days() {
+    if (_month == 2) {
+      return false;
+    }
+
+    return is30Days() == false ? true : false;
+  }
+
+  bool is29Days() {
+    return _month == 2 && isLeapYear();
+  }
+
+  bool is28Days() {
+    return isLeapYear() == false && _month == 2 ? true : false;
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
