@@ -108,6 +108,41 @@ class Date {
     return isLeapYear() == false && _month == 2 ? true : false;
   }
 
+  void _incrementYear() {
+    _year += 1;
+  }
+
+  void _incrementMonth() {
+    if (_month == 12) {
+      _incrementYear();
+      _month = 1;
+    } else {
+      _month += 1;
+    }
+  }
+
+  void _incrementDay() {
+    if (_day < 0) {
+      throw Exception("Day cannot be negative");
+    }
+
+    if (_day == 28 && is28Days()) {
+      _incrementMonth();
+      _day = 1;
+    } else if (_day == 29 && is29Days()) {
+      _incrementMonth();
+      _day = 1;
+    } else if (_day == 30 && is30Days()) {
+      _incrementMonth();
+      _day = 1;
+    } else if (_day == 31 && is31Days()) {
+      _incrementMonth();
+      _day = 1;
+    } else {
+      _day += 1;
+    }
+  }
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
