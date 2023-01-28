@@ -43,6 +43,10 @@ class Date {
     _year = year;
   }
 
+  int get day => _day;
+  int get month => _month;
+  int get year => _year;
+
   @override
   String toString() {
     return '$_day/$_month/$_year';
