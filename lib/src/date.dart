@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class DateException implements Exception {
   String error;
   DateException(this.error);
@@ -19,10 +21,13 @@ class Date {
   late int _month;
   late int _year;
 
+  String? _format;
+
   Date(DateTime time) {
     _day = time.day;
     _month = time.month;
     _year = time.year;
+    _format = "yyyy-MM-dd";
   }
 
   Date.today() {
@@ -31,6 +36,7 @@ class Date {
     _day = now.day;
     _month = now.month;
     _year = now.year;
+    _format = "yyyy-MM-dd";
   }
 
   Date.tomorrow() {
@@ -39,6 +45,7 @@ class Date {
     _day = now.day + 1;
     _month = now.month;
     _year = now.year;
+    _format = "yyyy-MM-dd";
   }
 
   Date.yesteday() {
@@ -47,6 +54,7 @@ class Date {
     _day = now.day - 1;
     _month = now.month;
     _year = now.year;
+    _format = "yyyy-MM-dd";
   }
 
   Date.fromInt({
@@ -57,6 +65,7 @@ class Date {
     _day = day;
     _month = month;
     _year = year;
+    _format = "yyyy-MM-dd";
   }
 
   /// The current day stored by the class
@@ -73,8 +82,12 @@ class Date {
 
   @override
   String toString() {
-    return '$_day/$_month/$_year';
+    final DateFormat formatter = DateFormat(_format);
+    final String formatted = formatter.format(DateTime(_year, _month, _day));
+    return formatted;
   }
+
+  void setFormat(String format) => _format = format;
 
   /// Checks wether the current class date is equal to a DateTime
   ///
