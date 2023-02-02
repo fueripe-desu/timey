@@ -208,6 +208,18 @@ class Date {
     return isLeapYear() == false && _month == 2 ? true : false;
   }
 
+  int daysInTheYear() {
+    return isLeapYear() ? 366 : 365;
+  }
+
+  int daysInTheMonth() {
+    if (is31Days()) return 31;
+    if (is30Days()) return 30;
+    if (is29Days()) return 29;
+
+    return 28;
+  }
+
   void _incrementYear() {
     _year += 1;
   }
