@@ -42,10 +42,12 @@ class Date {
   Date.tomorrow() {
     final now = DateTime.now();
 
-    _day = now.day + 1;
+    _day = now.day;
     _month = now.month;
     _year = now.year;
     _format = "yyyy-MM-dd";
+
+    _incrementDay();
   }
 
   Date.yesteday() {
