@@ -221,10 +221,18 @@ class Date {
   }
 
   void _incrementYear() {
+    if (_year < 0) {
+      throw Exception("Year cannot be negative");
+    }
+
     _year += 1;
   }
 
   void _incrementMonth() {
+    if (_month < 0) {
+      throw Exception("Month cannot be negative");
+    }
+
     if (_month == 12) {
       _incrementYear();
       _month = 1;
