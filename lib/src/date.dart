@@ -113,6 +113,18 @@ class Date {
     return sameDay && sameMonth && sameYear;
   }
 
+  bool isSameDay(DateTime date) {
+    return _day == date.day;
+  }
+
+  bool isSameMonth(DateTime date) {
+    return _month == date.month;
+  }
+
+  bool isSameYear(DateTime date) {
+    return _year == date.year;
+  }
+
   /// Returns `true` if the current class date is today.
   ///
   /// Uses the method [Date.isEqual] to check wether the
