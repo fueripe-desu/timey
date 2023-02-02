@@ -263,6 +263,49 @@ class Date {
     }
   }
 
+  void _decrementDay() {
+    if (_day < 0) {
+      throw Exception("Day cannot be negative");
+    }
+
+    if (_day == 1) {
+      _decrementMonth();
+
+      if (is31Days()) {
+        _day = 31;
+      } else if (is30Days()) {
+        _day = 30;
+      } else if (is29Days()) {
+        _day = 29;
+      } else if (is28Days()) {
+        _day = 28;
+      }
+    } else {
+      _day -= 1;
+    }
+  }
+
+  void _decrementMonth() {
+    if (_month < 0) {
+      throw Exception("Month cannot be negative");
+    }
+
+    if (_month == 1) {
+      _decrementYear();
+      _month = 12;
+    } else {
+      _month -= 1;
+    }
+  }
+
+  void _decrementYear() {
+    if (_year < 0) {
+      throw Exception("Year cannot be negative");
+    }
+
+    _year -= 1;
+  }
+
   void addDays(int amount) {
     if (amount < 1) throw DateException("Amount should be greater than 0.");
 
@@ -301,6 +344,15 @@ class Date {
 
     while (!isEqual(targetDate)) {
       _incrementDay();
+      print(this.toString());
+    }
+  }
+
+  void removeDays(int amount) {
+    if (amount < 1) throw DateException("Amount should be greater than 0.");
+
+    for (var i = 0; i < amount; i++) {
+      _decrementDay();
       print(this.toString());
     }
   }
